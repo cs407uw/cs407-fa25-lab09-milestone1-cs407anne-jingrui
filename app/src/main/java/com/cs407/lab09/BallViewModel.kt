@@ -40,7 +40,7 @@ class BallViewModel : ViewModel() {
     fun onSensorDataChanged(event: SensorEvent) {
         // Ensure ball is initialized
         val currentBall = ball ?: return
-
+        val sensitivity = 4f
         if (event.sensor.type == Sensor.TYPE_GRAVITY) {
             if (lastTimestamp != 0L) {
                 // TODO: Calculate the time difference (dT) in seconds
@@ -53,8 +53,8 @@ class BallViewModel : ViewModel() {
 
                 // --- 2. Convert gravity readings into game acceleration ---
                 // Gravity sensor values point opposite to real gravity, so invert X.
-                val xAcc = -event.values[0]   // Tilt right → move right
-                val yAcc = event.values[1]
+                val xAcc = -event.values[0] * sensitivity  // Tilt right → move right
+                val yAcc = event.values[1]* sensitivity
 
                 // TODO: Update the ball's position and velocity
                 // Hint: The sensor's x and y-axis are inverted
