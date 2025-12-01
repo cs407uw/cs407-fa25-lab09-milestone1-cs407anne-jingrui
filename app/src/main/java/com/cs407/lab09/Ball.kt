@@ -42,7 +42,7 @@ class Ball(
         val a1x = xAcc
         val a0y = accY
         val a1y = yAcc
-        val dt = dT   // time delta
+        val dt = .136.toFloat()  // time delta
 
         // ========= 1. Update velocity using Equation (1): =========
         // v1 = v0 + 1/2 (a0 + a1) dt
